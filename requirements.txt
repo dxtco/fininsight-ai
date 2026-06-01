@@ -1,0 +1,19 @@
+# Data & ML
+pandas
+numpy
+scikit-learn
+xgboost
+
+# LangChain & Vector DB
+langchain
+langchain-community
+langchain-openai
+chromadb
+tiktoken
+nltk
+joblib
+
+# Web & UI
+streamlit
+python-dotenv
+requests
