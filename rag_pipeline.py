@@ -17,9 +17,12 @@ def format_docs(docs):
 
     # rag_pipeline.py (partial update - top of initialize_rag_system)
 def initialize_rag_system():
-    api_key = os.getenv("GOOGLE_API_KEY")
+    # Check Streamlit Cloud secrets first, fallback to local os.getenv
+    import streamlit as st
+    api_key = st.secrets.get("GOOGLE_API_KEY") or os.getenv("GOOGLE_API_KEY")
+    
     if not api_key:
-        raise ValueError("❌ GOOGLE_API_KEY is missing from your .env file!")
+        raise ValueError("❌ GOOGLE_API_KEY is missing completely from secrets and environment!")
 
     # 1. Connect to the existing local ChromaDB store using real Google Embeddings
     from langchain_google_genai import GoogleGenerativeAIEmbeddings
